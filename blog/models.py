@@ -4,6 +4,10 @@ from django.utils import timezone
 
 
 # Это моя первая модель
+# todo это круто !
+# todo я бы таки ограничил поле text количество символов. Иначе могем словить текст из 524288 символов ))
+# todo а давай теперь сделаем вторую твою модель. Есть посты, но мы хотим знать мнение подписчиков !
+# todo пора нам делать комментарии !
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)

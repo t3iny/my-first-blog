@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        // давайка воткнем все эти чудесные файлы не в виде ссылок, а полноценно в проект)
+        // забавно что везде в других тепах ты накидал block конт
         <title>Blog teiny</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -10,6 +12,7 @@
     <body>
         <header class="page-header">
             <div class="container">
+            // иконку тоже уносим нафиг
                 {% if user.is_authenticated %}
                     <a href="{% url 'post_new' %}" class="top-menu">
                         {% include './icons/file-earmark-plus.svg' %}
