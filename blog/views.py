@@ -1,5 +1,5 @@
 from django.utils import timezone
-from .models import Post  # . Это обозначает текущий каталог или пакет. Это называется ОТНОСИТЕЛЬНЫЙ ИМПОРТ.
+from .models import Post, Comment  # . Это обозначает текущий каталог или пакет. Это называется ОТНОСИТЕЛЬНЫЙ ИМПОРТ.
 # Тобиш искать файл forms.py в том же каталоге, что и текущий файл Python, в котором находится этот оператор импорта.
 # Import Post это означает - импортируй из этого файла класс Post
 from django.shortcuts import render, get_object_or_404  # Имя модуля, из которого импортируем данные.
@@ -43,7 +43,7 @@ def post_new(request):  # А тут уже POST-запросы и GET-запро
             post.save()  # Сохраняем объект в БД.
             return redirect('post_detail', pk=post.pk)  # Выполняет перенаправление на страницу детализации только
             # что созданного поста (post_detail), передавая в неё primary_key поста.
-    elif request.method == "GET":  # Если это не запрос, проверка валидности не выполняется, тогда отдай пустую форму.
+    else:  # Тогда отдай пустую форму.
         form = PostForm()  # Создает пустую форму, аналогично def post_new(request).
     return render(request, 'blog/post_edit.html', {'form': form})
     # Рендерим шаблон blog/post_edit.html, передавая в него созданную форму в качестве контекста с ключом form.
