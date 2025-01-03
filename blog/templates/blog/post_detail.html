@@ -17,4 +17,21 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </article>
+    <h3>Комментарии к посту</h3><br>
+    {% for comment in comments %}
+        <fieldset>
+            <summary><b>{{ comment.author_name }}</b></summary>
+            {{ comment.text }}
+        </fieldset>
+        <br>
+    {% endfor %}<br>
+    <hr>
+    <h3>Добавить новый комментарий</h3>
+    <div class="post-comment">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="save btn btn-secondary">Save</button>
+        </form>
+
+    </div>
 {% endblock %}

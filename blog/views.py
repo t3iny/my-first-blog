@@ -3,7 +3,7 @@ from .models import Post, Comment  # . Это обозначает текущи�
 # Тобиш искать файл forms.py в том же каталоге, что и текущий файл Python, в котором находится этот оператор импорта.
 # Import Post это означает - импортируй из этого файла класс Post
 from django.shortcuts import render, get_object_or_404  # Имя модуля, из которого импортируем данные.
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.shortcuts import redirect
 
 
@@ -24,7 +24,21 @@ def post_detail(request, pk):  # request: Объект HTTP-запроса со�
     # например, URL-адрес, подобный /blog/123/, передаст 123 как pk.
     post = get_object_or_404(Post, pk=pk)  # Это внутренняя функция Django. Она пытается найти в базе данных объект
     # Post и pk которого совпадает со значением, переданным в функцию. Если совпадений Post не найдено - выдаст Http404
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comment_form = CommentForm()
+    comments = post.comments.filter(is_deleted=False)
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+
+    context = {
+        'post': post,
+        'comment_form': comment_form,
+        'comments': comments,
+    }
+    return render(request, 'blog/post_detail.html', context)
     # Отображает HTML-шаблон, расположенный по адресу blog/post_detail.html. Тобиш это путь к файлу в котором будут
     # отображаться сведения о публикации. Он будет содержать заполнители для заголовка публикации, её содержания,
     # автора, даты и всего что туда запихнем, которые будут заполняться динамически.
