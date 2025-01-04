@@ -9,15 +9,17 @@
                 </a>
             {% endif %}
         </aside>
+        <b>
         {% if post.published_date %}
             <time class="date">
                 {{ post.published_date }}
             </time>
         {% endif %}
+        </b>
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </article>
-    <h3>Комментарии к посту</h3><br>
+    <h3>Комментарии к посту:</h3><br>
     {% for comment in comments %}
         <fieldset>
             <summary><b>{{ comment.author_name }}</b></summary>
@@ -26,11 +28,11 @@
         <br>
     {% endfor %}<br>
     <hr>
-    <h3>Добавить новый комментарий</h3>
+    <h3>Добавить новый комментарий:</h3>
     <div class="post-comment">
         <form method="POST" class="post-form">{% csrf_token %}
             {{ comment_form.as_p }}
-            <button type="submit" class="save btn btn-secondary">Save</button>
+            <button type="submit" class="save btn btn-secondary">Опубликовать</button>
         </form>
 
     </div>
