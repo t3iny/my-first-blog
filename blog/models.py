@@ -29,8 +29,8 @@ class Comment(models.Model):  # Объявление новой модели Com
     post = models.ForeignKey("Post", on_delete=models.CASCADE, related_name="comments")  # С помощью FK связываем
     # C моделью Post (если она существует). on_delete=models.CASCADE: Как я понял если Post удаляется, то и комменты.
     # related_name="comments" Тобиш покажет все связанные комментарии в публикации.
-    author_name = models.CharField(verbose_name="Введите ваше имя:", max_length=100)  # Поле автора в 100 символов.
-    text = models.TextField(verbose_name="Введите текст:", max_length=700)  # Текст комментария.
+    author_name = models.CharField(verbose_name="Введите ваше имя:", max_length=100)
+    text = models.TextField(verbose_name="Введите текст:", max_length=700)
     created_date = models.DateTimeField(default=timezone.now)  # DateTimeField команда сохраняет как дату, так и время.
     # default=timezone.now: Тобиш по умолчанию равно времени создания.
     is_deleted = models.BooleanField(verbose_name="Видимость коммента", default=False, null=True)  # Флаг для удаления.
