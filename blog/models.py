@@ -15,6 +15,7 @@ class Post(models.Model):  # Объявление новой модели Post(�
     # Blank=True: в формах поле может быть пустым.
     # Null=True: в базе данных поле может быть пустым. (Означает, что публикация может существовать в
     # черновике и не быть опубликованной).
+    image = models.ImageField(upload_to="media/", null=True, blank=True, verbose_name='Изображение',)
 
     def publish(self):  # Метод публикации класса Post.
         self.published_date = timezone.now()  # Устанавливает в поле published_date текущую дату и время.
@@ -38,7 +39,3 @@ class Comment(models.Model):  # Объявление новой модели Com
     def __str__(self):  # То что отображается
         author_display = self.author_name if self.author_name else "Аноним"  # Если имя не указано, выставить Аноним.
         return f"{author_display}:'{self.post.title}':{self.text[:50]}..."
-
-
-class Like(models.Model):
-    pass
