@@ -4,8 +4,12 @@
     {% for post in posts %}
         <article class="post">
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            {% if post.image %}
+                <img src="" alt="{{ post.title }}" style="max-width: 500px;">
+            {% endif %}
                 <p>{{ post.text|linebreaksbr }}</p>
             <time>Опубликовано: {{ post.published_date }}</time>
+            <p><div>Количество комментариев: {{ post.comment_count }}</div><p>
         </article>
     {% endfor %}
 {% endblock %}
