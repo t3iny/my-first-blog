@@ -9,7 +9,7 @@ class Post(models.Model):
     text = models.TextField(verbose_name="Введите текст поста:", max_length=700)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    image = models.ImageField(upload_to="media", null=True, blank=True, verbose_name='Изображение',)
+    image = models.ImageField(upload_to="post_images", null=True, blank=True, verbose_name='Изображение',)
 
 
     def publish(self):

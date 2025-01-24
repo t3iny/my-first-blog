@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text')
+        fields = ('title', 'text', 'image')
         labels = {'title': 'Заголовок', 'text': 'Текст', 'image': 'Загрузить изображение:'}
         widgets = {
             'title': forms.TextInput(attrs={
@@ -21,9 +21,9 @@ class PostForm(forms.ModelForm):
             'cols': 30,
             }),
             'image': forms.FileInput(attrs={
-            'class': 'form-control',
-            'id': 'my-image-upload',
-            'accept': 'image/*',
+                'class': 'form-control',
+                'accept': 'image/*',
+                'placeholder': 'Выберите изображения',
             })
         }
 

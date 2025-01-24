@@ -13,9 +13,6 @@
             {% endif %}
         </aside>
         <h2>{{ post.title }}</h2>
-            {% if post.image %}
-                <img src="" alt="{{ post.title }}" style="max-width: 500px;">
-            {% endif %}
         <p>{{ post.text|linebreaksbr }}</p>
         <p>{% if post.image %}
             <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 300px; max-height: 300px;">
