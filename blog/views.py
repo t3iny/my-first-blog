@@ -32,6 +32,9 @@ def post_detail(request, pk):  # request: Объект HTTP-запроса со�
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
 
     context = {
         'post': post,

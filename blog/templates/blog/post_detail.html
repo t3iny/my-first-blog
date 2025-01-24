@@ -1,24 +1,26 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 
 {% block content %}
     <article class="post">
         <aside class="actions">
             {% if user.is_authenticated %}
                 <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
-                    {% include './icons/pencil-fill.svg' %}
+                    <img src="{% static 'icons/pencil-fill.svg' %}" alt="Редактировать пост"
+                         style="width: 20px; height: 20px; vertical-align: middle;">
                 </a>
             {% endif %}
         </aside>
-        <b>
-        {% if post.published_date %}
-            <time class="date">
-                {{ post.published_date }}
-            </time>
-        {% endif %}
-        </b>
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
+        <p>{% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 300px; max-height: 300px;">
+        {% endif %}</p>
+        <p>{% if post.published_date %}
+            <time class="date">{{ post.published_date }}</time>{% endif %}</p>
     </article>
+    <hr>
     <h3>Комментарии к посту:</h3><br>
     {% for comment in comments %}
         <fieldset>
@@ -30,7 +32,8 @@
     <hr>
     <h3>Добавить новый комментарий:</h3>
     <div class="post-comment">
-        <form method="POST" class="post-form">{% csrf_token %}
+        <form method="POST" class="post-form">
+            {% csrf_token %}
             {{ comment_form.as_p }}
             <button type="submit" class="save btn btn-secondary">Опубликовать</button>
         </form>

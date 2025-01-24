@@ -3,10 +3,17 @@
 {% block content %}
     {% for post in posts %}
         <article class="post">
+            <hr>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-            <time>Опубликовано: {{ post.published_date }}</time>
-            <p><div>Количество комментариев: {{post.comments.count}}</div>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <p>{% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 300px; max-height: 300px;">
+            {% endif %}</p>
+            <p>Опубликовано:
+                <time class="date">{{ post.published_date }}</time>
+            </p>
+            <div>Количество комментариев: {{ post.comments.count }}</div>
+            <hr>
         </article>
     {% endfor %}
 {% endblock %}
