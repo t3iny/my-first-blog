@@ -20,7 +20,6 @@
         <p>{% if post.published_date %}
             <time class="date">{{ post.published_date }}</time>{% endif %}</p>
     </article>
-    <hr>
     <h3>Комментарии к посту:</h3><br>
     {% for comment in comments %}
         <fieldset>
@@ -29,14 +28,11 @@
         </fieldset>
         <br>
     {% endfor %}<br>
-    <hr>
-    <h3>Добавить новый комментарий:</h3>
     <div class="post-comment">
         <form method="POST" class="post-form">
             {% csrf_token %}
             {{ comment_form.as_p }}
             <button type="submit" class="save btn btn-secondary">Опубликовать</button>
         </form>
-
     </div>
 {% endblock %}

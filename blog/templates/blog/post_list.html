@@ -3,7 +3,6 @@
 {% block content %}
     {% for post in posts %}
         <article class="post">
-            <hr>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
             <p>{% if post.image %}
@@ -13,7 +12,6 @@
                 <time class="date">{{ post.published_date }}</time>
             </p>
             <div>Количество комментариев: {{ post.comments.count }}</div>
-            <hr>
         </article>
     {% endfor %}
 {% endblock %}

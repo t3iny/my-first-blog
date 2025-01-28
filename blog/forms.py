@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text', 'image')
-        labels = {'title': 'Заголовок', 'text': 'Текст', 'image': 'Загрузить изображение:'}
+        labels = {'image': 'Загрузить изображение:'}
         widgets = {
             'title': forms.TextInput(attrs={
             'class': 'form-control',
