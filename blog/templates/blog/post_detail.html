@@ -3,36 +3,42 @@
 
 
 {% block content %}
-    <article class="post">
-        <aside class="actions">
-            {% if user.is_authenticated %}
-                <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
-                    <img src="{% static 'icons/pencil-fill.svg' %}" alt="Редактировать пост"
-                         style="width: 20px; height: 20px; vertical-align: middle;">
-                </a>
-            {% endif %}
-        </aside>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-        <p>{% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 300px; max-height: 300px;">
-        {% endif %}</p>
-        <p>{% if post.published_date %}
-            <time class="date">{{ post.published_date }}</time>{% endif %}</p>
-    </article>
-    <h3>Комментарии к посту:</h3><br>
-    {% for comment in comments %}
-        <fieldset>
-            <summary><b>{{ comment.author_name }}</b></summary>
-            {{ comment.text }}
-        </fieldset>
-        <br>
-    {% endfor %}<br>
-    <div class="post-comment">
-        <form method="POST" class="post-form">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button type="submit" class="save btn btn-secondary">Опубликовать</button>
-        </form>
+    <div class="actions">
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i>
+            Вернуться к постам
+        </a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
+                <img src="{% static 'icons/pencil-fill.svg' %}" alt="Редактировать пост"
+                     style="width: 20px; height: 20px; vertical-align: middle;">
+            </a>
+        {% endif %}
+    </div>
+    <div class='framing'>
+        <article class="post">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <p>{% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 250px; max-height: 250px;">
+            {% endif %}</p>
+            <p>{% if post.published_date %}
+                <time class="date">{{ post.published_date }}</time>{% endif %}</p>
+            <h3>Комментарии к посту:</h3><br>
+            {% for comment in comments %}
+                <fieldset>
+                    <summary><b>{{ comment.author_name }}</b></summary>
+                    {{ comment.text }}
+                </fieldset>
+                <br>
+            {% endfor %}<br>
+        </article>
+        <div class="post-comment">
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="save btn btn-secondary">Опубликовать</button>
+            </form>
+        </div>
     </div>
 {% endblock %}

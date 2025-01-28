@@ -1,10 +1,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h2>Новый пост:</h2>
-    <form method="POST" class="post-form" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-secondary">Опубликовать</button>
-    </form>
+    <div class="actions">
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i>
+            Вернуться к постам
+        </a>
+    </div>
+    <div class='framing'>
+        <div class="post-comment">
+            <h2>Новый пост:</h2>
+            <form method="POST" class="post-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="save btn btn-secondary">Опубликовать</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
