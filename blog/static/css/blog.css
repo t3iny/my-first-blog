@@ -106,9 +106,9 @@ body {
     border: 2px solid #000000;
     border-radius: 15px;
     transition: all 0.3s ease;
-    color: #3498db;
+    color: rgba(175, 170, 170, 0.8);
     cursor: pointer;
-    width: 40%;
+    width: 60%;
     margin-bottom: 30px;
 }
 .post_outline * {
