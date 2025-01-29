@@ -1,5 +1,5 @@
 .page-header {
-    background-color: rgba(46, 41, 41, 0.8);
+    background-color: rgba(50, 46, 46, 0.8);
     margin-top: 0;
     margin-bottom: 50px;
     padding: 20px 20px 20px 30px;
@@ -65,13 +65,14 @@ h4 a {
 .btn-secondary,
 .btn-secondary:visited {
     color: #000000;
-    background: none;
-    border-color: #0864b5;
+    background-color: rgba(175, 170, 170, 0.8);
+    border-color: #000000;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
 }
 
 .btn-secondary:hover {
     color: #FFFFFF;
-    background-color: #0864b5;
+    background-color: #4c4c5e;
 }
 
 body {
@@ -116,9 +117,9 @@ body {
 }
 
 .post_outline:hover {
-    background-color: #3498db;
+    background-color: rgba(175, 170, 170, 0.8);
     color: white;
-    border-color: #2980b9;
+    border-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 }
