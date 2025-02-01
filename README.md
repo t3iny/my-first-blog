@@ -34,11 +34,10 @@
     git clone (https://github.com/t3iny/my-first-blog.git)
     cd my-first-blog
     ```
-2.  **Создание виртуального окружения (рекомендуется):**
+2.  **Создание виртуального окружения:**
     ```
     python -m venv venv
-    source venv/bin/activate  # Для Linux/macOS
-    # venv\Scripts\activate  Для Windows
+    venv\Scripts\activate
     ```
 3.  **Установка зависимостей:**
     ```
