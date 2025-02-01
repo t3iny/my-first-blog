@@ -45,6 +45,7 @@
     ```
 4.  **Применение миграций:**
     ```
+    python manage.py makemigrations
     python manage.py migrate
     ```
 5.  **Запуск сервера разработки:**
