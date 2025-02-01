@@ -7,9 +7,11 @@
         <article class="post">
             <h2>{{ post.title }}</h2>
             <p>{{ post.text|linebreaksbr }}</p>
-            <p>{% if post.image %}
-                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 250px; max-height: 250px;">
-            {% endif %}</p>
+            <div class="image-container">
+                <p>{% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 250px; max-height: 250px;">
+                {% endif %}</p>
+            </div>
             <p>{% if post.published_date %}
                 <time class="date">{{ post.published_date }}</time>{% endif %}</p>
             <h3>Комментарии к посту:</h3><br>
